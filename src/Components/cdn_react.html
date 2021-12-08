@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        class App extends React.Component {
+            state = {
+                name: 'Anuradha',
+                age: 25
+            }
+            handleClick(e) {
+                this.setState({
+                    name: 'Sampath'        
+                });
+                console.log(e.target);
+                console.log()
+            }
+            handleOnMouseOver(e) {
+                console.log(e.target, e.pageX);
+            }
+            handleCopy(e){
+                console.log('Try being original for once');
+            }
+            render() {
+                return (
+                    <div className="app-content">
+                        <h1>Hey Anuradha</h1>
+                        <p>my name is{this.state.name} and I am {this.state.age}</p>
+                        <button onClick={this.handleClick}>click me</button>
+                        <button onMouserOver={this.handleOnMouseOver}>Mouse over me</button>
+                        <p onCopy={this.handleCopy}>Copy this text by clicking right click button</p>
+                    </div>
+                );
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById('app'))
+    </script>
+</body>
+
+</html>

@@ -5,7 +5,7 @@ import React from 'react';
 const Ninjas = (props) => {
     // render() {
         // console.log(this.props);
-        const { myName, age } = this.props;
+        const { myName, age } = props;
         return (
             <div className='ninja'>
                 <div>Name: { myName }</div>

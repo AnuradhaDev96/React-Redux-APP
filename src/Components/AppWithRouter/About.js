@@ -1,4 +1,5 @@
 import React from 'react';
+import DynamicColor from '../HigherOrderComponents/DynamicColor';
 
 //UI component | Stateless
 const About = () => {
@@ -10,4 +11,4 @@ const About = () => {
     )
 }
 
-export default About;
+export default DynamicColor(About);

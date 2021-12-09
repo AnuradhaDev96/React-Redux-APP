@@ -1,52 +1,40 @@
-// import logo from './logo.svg';
 import React, { Component } from 'react';
-import './App.css';
-import Ninjas from './Components/Ninjas';
-import NinjaList from './Components/NinjaList';
-import AddNinja from './Components/AddNinja';
+import ToDos from './Components/ToDoApp/ToDos';
+import AddToDoTask from './Components/ToDoApp/AddToDoTask';
 
 //Container Component | Statefull
 class App extends Component {
   state = {
-    ninjas: [
-      { myName: 'Anuradha', age: '20', id: 1 },
-      { myName: 'Travis', age: '31', id: 2 },
-      { myName: 'Head', age: '50', id: 3 }
+    toDos: [
+      { content: 'buy some milk', id: 1 },
+      { content: 'get some sugar', id: 2 },
+      { content: 'get tea leaves packet', id: 3 }
     ]
   }
 
-  //create a function to expect ninja type object from the form component (AddNinja)
-  addNewNinja = (newNinja) => {
-    newNinja.id = Math.random();
-    console.log(newNinja);
-    let ninjasCC = [...this.state.ninjas, newNinja]; /*creating a carbon copy of ninjas with new 
-    // ninja value sent from forms component*/
-    console.log(ninjasCC);
-    this.setState({
-      ninjas: ninjasCC
+  onSpanClickDeleteAction = (id) => {
+    let filteredToDos = this.state.toDos.filter(todo => {
+      return todo.id !== id
     });
-
+    this.setState({
+      toDos: filteredToDos
+    });
   }
 
-  deleteNinja = (id) => {
-    console.log(id);
-    let filteredNinjas = this.state.ninjas.filter(ninja => {
-      return ninja.id !== id
-    });
+  addNewTask = (newTask) => {
+    newTask.id = Math.random();
+    let toDosCC = [...this.state.toDos, newTask];
     this.setState({
-      ninjas: filteredNinjas
+      toDos: toDosCC
     })
   }
 
   render() {
     return (
-      <div className="App">
-
-        <h1>This is my first react application</h1>
-        <h3>Welcome!</h3>
-        <Ninjas myName='Zander' age='10' />
-        <NinjaList ninjas={this.state.ninjas} deleteNinja={this.deleteNinja} />
-        <AddNinja addNewNinja={this.addNewNinja} />{/* Sending a function as a prop(parameter) */}
+      <div className="App container">
+        <h2 className="center blue-text">ToDo App</h2>
+        <AddToDoTask addToDoTask={this.addNewTask} />
+        <ToDos toDos={this.state.toDos} deleteToDo={this.onSpanClickDeleteAction} />
       </div>
     );
   }

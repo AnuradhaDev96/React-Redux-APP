@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Shape from '../../assets/pokemon.png'
 
 //Container component | Stateful
 class Home extends Component {
@@ -25,9 +26,10 @@ class Home extends Component {
                 posts.map(post => {
                     return (
                         <div className="post card" key={post.id}>
+                            <img src={Shape} alt="A shape" />
                             <div className="card-content">
                                 <Link to={`/${post.id}`}>
-                                    <span className="card-title">
+                                    <span className="card-title red-text">
                                         {post.title}
                                     </span>
                                 </Link>
@@ -41,7 +43,7 @@ class Home extends Component {
                 <p className="center">No posts yet</p>
             );
         return (
-            <div className='container'>
+            <div className='container home'>
                 <h4 className='center'>Home</h4>
                 {postList}
             </div>

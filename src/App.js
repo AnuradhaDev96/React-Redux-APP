@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Components/AppWithRouter/Home';
 import About from './Components/AppWithRouter/About';
 import Contact from './Components/AppWithRouter/Contact';
+import PostDetails from "./Components/AppWithRouter/PostDetails";
 
 //Container Component | Statefull
 class App extends Component {
@@ -13,9 +14,10 @@ class App extends Component {
         <div className="App">
           <NavBar />
           <Routes>
-            <Route exact path='/' element={<Home/>} />
-            <Route path='/about' element={<About/>} />
-            <Route path='/contact' element={<Contact/>} />
+            <Route exact path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path="/:post_id" element={<PostDetails />} />
           </Routes>
         </div>
       </BrowserRouter>
